@@ -1,7 +1,6 @@
 import sqlite3
 import time
 import sys
-import matplotlib.pyplot as plt
 import atexit
 
 # Connect to the database or create it if it doesn't exist
@@ -200,18 +199,6 @@ def Database():
     for row in data:
         print(row)
     return data
-
-def create_pie_chart():
-    cursor.execute('SELECT category, COUNT(*) as count FROM collected_data GROUP BY category')
-    chart_data = cursor.fetchall()
-    labels = [row[0] for row in chart_data]
-    sizes = [row[1] for row in chart_data]
-
-    plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
-    plt.axis('equal')
-    plt.title('Emissions_Distribution')
-    plt.show()
-
     
 def quit():
     print("The tasks are completed.....")
